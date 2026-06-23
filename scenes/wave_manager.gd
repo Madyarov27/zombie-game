@@ -8,7 +8,7 @@ var zombies_alive := 0
 var zombies_to_spawn := 0
 var spawn_index := 0
 var spawn_timer := 0.0
-var spawn_interval := 1.5
+var spawn_interval := 5
 
 
 func _ready():

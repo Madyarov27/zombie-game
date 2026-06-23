@@ -4,6 +4,8 @@
 [ext_resource type="PackedScene" uid="uid://b7kbq5u3rgang" path="res://scenes/zombie.tscn" id="2_5t4e2"]
 [ext_resource type="Script" uid="uid://ye073ci0i7tf" path="res://scenes/wave_manager.gd" id="3_5t4e2"]
 [ext_resource type="Texture2D" uid="uid://cqewtdmsdomo3" path="res://scenes/coast_sand_rocks_02_diff_4k.jpg" id="3_xvgsr"]
+[ext_resource type="PackedScene" uid="uid://cglfxppacsxky" path="res://scenes/barricade.tscn" id="5_oqwcg"]
+[ext_resource type="Texture2D" uid="uid://c0bcp26ttgxr4" path="res://scenes/crosshair.png" id="6_a6664"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_e0s0o"]
 
@@ -50,7 +52,7 @@ uv1_scale = Vector3(10, 10, 10)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.00429821)
 
 [node name="Player" type="CharacterBody3D" parent="." unique_id=125539894 groups=["player"]]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.24935341, 0, 0.024317503)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.24935341, 0, 6.0243177)
 script = ExtResource("1_ns6u7")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Player" unique_id=1051674423]
@@ -79,12 +81,14 @@ light_energy = 3.073
 [node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=1932397874]
 environment = SubResource("Environment_r3fl7")
 
-[node name="Zombie" parent="." unique_id=1092596387 instance=ExtResource("2_5t4e2")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.3547516, -0.1653626, -7.9709935)
-
 [node name="NavigationRegion3D" type="NavigationRegion3D" parent="." unique_id=1334334887]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.045684338, 0.67277455, -0.020254135)
 navigation_mesh = SubResource("NavigationMesh_e0s0o")
+
+[node name="cave" type="CSGBox3D" parent="NavigationRegion3D" unique_id=106428479]
+transform = Transform3D(0.35836798, 0, 0.9335804, 0, 1, 0, -0.9335804, 0, 0.35836798, -3, 0.327, -6)
+use_collision = true
+size = Vector3(4, 3, 0.4)
 
 [node name="CSGBox3D14" type="CSGBox3D" parent="NavigationRegion3D" unique_id=1016198931]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.044374, 0.5584898, 35.22625)
@@ -97,16 +101,30 @@ use_collision = true
 size = Vector3(45.977356, 0.5, 57)
 material = SubResource("StandardMaterial3D_noarx")
 
+[node name="cave2" type="CSGBox3D" parent="NavigationRegion3D" unique_id=1496887197]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.045684338, 0.32722545, -7.979746)
+use_collision = true
+size = Vector3(5, 3, 0.4)
+
+[node name="cave3" type="CSGBox3D" parent="NavigationRegion3D" unique_id=151402383]
+transform = Transform3D(-0.39714786, 0, 0.91775465, 0, 1, 0, -0.91775465, 0, -0.39714786, 3.1, 0.327, -6.2)
+use_collision = true
+size = Vector3(4, 3, 0.4)
+
+[node name="cave4" type="CSGBox3D" parent="NavigationRegion3D" unique_id=1871472561]
+transform = Transform3D(-0.7986355, 0, 0.6018151, 0, 1, 0, -0.6018151, 0, -0.7986355, -2.3838377, 0.32700002, -3.4735637)
+use_collision = true
+size = Vector3(2.6, 3, 0.4)
+
+[node name="cave5" type="CSGBox3D" parent="NavigationRegion3D" unique_id=1477851197]
+transform = Transform3D(0.7771459, 0, 0.6293204, 0, 1, 0, -0.6293204, 0, 0.7771459, 2.7715786, 0.32700002, -3.5880737)
+use_collision = true
+size = Vector3(3, 3, 0.4)
+
 [node name="SpawnPoints" type="Node3D" parent="." unique_id=83367137]
 
 [node name="Marker3D" type="Marker3D" parent="SpawnPoints" unique_id=1414726309]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.9261494, 2.0261703, -2.4511585)
-
-[node name="Marker3D2" type="Marker3D" parent="SpawnPoints" unique_id=1886037105]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13.661354, 1.1710343, -8.639101)
-
-[node name="Marker3D3" type="Marker3D" parent="SpawnPoints" unique_id=1852546673]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.6107473, 0.48736668, -3.773861)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.074, 0.2, -6.451)
 
 [node name="WaveManager" type="Node" parent="." unique_id=1603668951]
 script = ExtResource("3_5t4e2")
@@ -116,12 +134,6 @@ spawn_points_path = NodePath("../SpawnPoints")
 [node name="Timer" type="Timer" parent="WaveManager" unique_id=1446306855]
 wait_time = 3.0
 one_shot = true
-
-[node name="Zombie2" parent="." unique_id=850933289 instance=ExtResource("2_5t4e2")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.11067, -0.1653626, -7.9709935)
-
-[node name="Zombie3" parent="." unique_id=107889379 instance=ExtResource("2_5t4e2")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.1653626, -7.531316)
 
 [node name="HUD" type="CanvasLayer" parent="." unique_id=1234659678]
 
@@ -133,6 +145,21 @@ offset_bottom = 50.0
 scale = Vector2(2.602633, 2.373132)
 text = "Gold: 0"
 
+[node name="TextureRect" type="TextureRect" parent="HUD" unique_id=1883665322]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -23.0
+offset_top = -23.0
+offset_right = 489.0
+offset_bottom = 496.54443
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.08990002, 0.08853911)
+texture = ExtResource("6_a6664")
+
 [node name="HealthLabel" type="Label" parent="HUD" unique_id=1160183934 groups=["health_label"]]
 offset_left = 35.0
 offset_top = 568.0
@@ -141,5 +168,8 @@ offset_bottom = 591.0
 scale = Vector2(2.2592592, 2)
 text = "Health: 100"
 label_settings = SubResource("LabelSettings_e0s0o")
+
+[node name="barricade" parent="." unique_id=1214983301 instance=ExtResource("5_oqwcg")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0, -3)
 
 [connection signal="timeout" from="WaveManager/Timer" to="WaveManager" method="_on_timer_timeout"]

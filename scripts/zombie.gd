@@ -1,7 +1,7 @@
 extends CharacterBody3D
 
 var health := 100
-var speed := 4.0
+var speed := 5
 var attack_range := 1.5
 var attack_damage := 10
 var attack_cooldown := 1.0
@@ -10,6 +10,18 @@ var time_since_attack := 0.0
 
 func _physics_process(delta):
 	time_since_attack += delta
+	
+	var barricade = get_nearest_blocking_barricade()
+	if barricade != null:
+		velocity.x = 0
+		velocity.z = 0
+		if time_since_attack >= attack_cooldown:
+			time_since_attack = 0.0
+			barricade.break_board()
+		velocity.y = 9.8 * delta
+		move_and_slide()
+		return
+	
 	var player = get_tree().get_first_node_in_group("player")
 	if player:
 		var distance = global_position.distance_to(player.global_position)
@@ -55,3 +67,27 @@ func die():
 		print("Calling add_gold")
 		player.add_gold(50)
 	queue_free()
+	
+
+func get_nearest_blocking_barricade():
+	var player = get_tree().get_first_node_in_group("player")
+	if player == null:
+		return null
+		
+	var barricades = get_tree().get_nodes_in_group("barricades")
+	for b in barricades:
+		if b.boards_up <= 0:
+			continue
+	
+		var dist_to_barricade = global_position.distance_to(b.global_position)
+		if dist_to_barricade > 3.0:
+			continue
+			
+			
+		var to_player = (player.global_position - global_position).normalized()
+		var to_barricade = (b.global_position - global_position).normalized()
+		
+		if to_player.dot(to_barricade) > 0.3:
+			return b
+	
+	return null

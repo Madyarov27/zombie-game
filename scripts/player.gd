@@ -46,6 +46,12 @@ func _physics_process(delta):
 	velocity.y -= 16 * delta  # gravity
 	move_and_slide()
 	
+	if Input.is_action_pressed("repair"):
+		var barricades = get_tree().get_nodes_in_group("barricades")
+		for b in barricades:
+			if global_position.distance_to(b.global_position) < 5.0:
+				b.repair(delta)
+	
 
 func shoot():
 	var ray = $Camera3D/RayCast3D

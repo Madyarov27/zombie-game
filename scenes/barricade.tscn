@@ -1,0 +1,33 @@
+[gd_scene format=3 uid="uid://cglfxppacsxky"]
+
+[ext_resource type="Script" uid="uid://8rxgjfuadu4u" path="res://scenes/boards_up.gd" id="1_k4dkl"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_oqwcg"]
+albedo_color = Color(0.21960784, 0.08627451, 0, 1)
+
+[node name="barricade" type="Node3D" unique_id=1214983301]
+script = ExtResource("1_k4dkl")
+
+[node name="CSGBox3D" type="CSGBox3D" parent="." unique_id=727727648]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 1, 0)
+material = SubResource("StandardMaterial3D_oqwcg")
+
+[node name="CSGBox3D2" type="CSGBox3D" parent="." unique_id=1495036964]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 1, 0)
+material = SubResource("StandardMaterial3D_oqwcg")
+
+[node name="CSGBox3D3" type="CSGBox3D" parent="." unique_id=2020062845]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 1, 0)
+material = SubResource("StandardMaterial3D_oqwcg")
+
+[node name="CSGBox3D4" type="CSGBox3D" parent="." unique_id=636974424]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 2, 0)
+material = SubResource("StandardMaterial3D_oqwcg")
+
+[node name="CSGBox3D5" type="CSGBox3D" parent="." unique_id=680706111]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 2, 0)
+material = SubResource("StandardMaterial3D_oqwcg")
+
+[node name="CSGBox3D6" type="CSGBox3D" parent="." unique_id=96624595]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 2, 0)
+material = SubResource("StandardMaterial3D_oqwcg")
