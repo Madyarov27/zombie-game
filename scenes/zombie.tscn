@@ -1,0 +1,24 @@
+[gd_scene format=3 uid="uid://b7kbq5u3rgang"]
+
+[ext_resource type="Script" uid="uid://cjs7umeq5htql" path="res://scripts/zombie.gd" id="1_1vlb3"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_e0s0o"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_sier2"]
+albedo_color = Color(0.015999984, 0.48, 0, 0.99607843)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_e0s0o"]
+
+[node name="Zombie" type="CharacterBody3D" unique_id=1092596387]
+script = ExtResource("1_1vlb3")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=2109069193]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+mesh = SubResource("BoxMesh_e0s0o")
+surface_material_override/0 = SubResource("StandardMaterial3D_sier2")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1524701630]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.9941149, 0)
+shape = SubResource("BoxShape3D_e0s0o")
+
+[node name="NavigationAgent3D" type="NavigationAgent3D" parent="." unique_id=1178751166]
