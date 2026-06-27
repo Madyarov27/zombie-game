@@ -2,10 +2,12 @@
 
 [ext_resource type="Script" uid="uid://brm2u0eo6ykfq" path="res://scripts/player.gd" id="1_ns6u7"]
 [ext_resource type="PackedScene" uid="uid://b7kbq5u3rgang" path="res://scenes/zombie.tscn" id="2_5t4e2"]
+[ext_resource type="Texture2D" uid="uid://cfmnknmvs07sj" path="res://scenes/bunker_tile.png" id="2_cptob"]
 [ext_resource type="Script" uid="uid://ye073ci0i7tf" path="res://scenes/wave_manager.gd" id="3_5t4e2"]
-[ext_resource type="Texture2D" uid="uid://cqewtdmsdomo3" path="res://scenes/coast_sand_rocks_02_diff_4k.jpg" id="3_xvgsr"]
 [ext_resource type="PackedScene" uid="uid://cglfxppacsxky" path="res://scenes/barricade.tscn" id="5_oqwcg"]
 [ext_resource type="Texture2D" uid="uid://c0bcp26ttgxr4" path="res://scenes/crosshair.png" id="6_a6664"]
+[ext_resource type="PackedScene" uid="uid://di8kb3v6yh88l" path="res://scenes/shop.tscn" id="7_10v3s"]
+[ext_resource type="PackedScene" uid="uid://djsf53che5hrr" path="res://scenes/door.tscn" id="8_cptob"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_e0s0o"]
 
@@ -28,23 +30,23 @@ sky_material = SubResource("ProceduralSkyMaterial_xvgsr")
 [sub_resource type="Environment" id="Environment_r3fl7"]
 background_mode = 2
 background_color = Color(0.65138954, 0.67364436, 0.6346519, 1)
-background_energy_multiplier = 1.13
+background_energy_multiplier = 0.46
 sky = SubResource("Sky_5t4e2")
 ambient_light_source = 2
 ambient_light_color = Color(0.65012825, 0.6501283, 0.6501282, 1)
 ambient_light_energy = 0.53
 
 [sub_resource type="NavigationMesh" id="NavigationMesh_e0s0o"]
-vertices = PackedVector3Array(-9.686936, -0.21994948, 35.194515, -6.1869364, -0.21994948, 35.194515, -5.9869366, -0.21994948, 34.794514, -9.686936, -0.21994948, -12.705484, -0.086936, -0.21994948, 35.694515, -0.8869362, -0.21994948, 35.694515, -0.8869362, -0.21994948, 43.694515, 0.11306381, -0.21994948, 35.494514, 35.713066, -0.21994948, 43.694515, -0.086936, -0.21994948, 34.794514, 0.11306381, -0.21994948, 34.994514, 35.713066, -0.21994948, -12.705484, -5.9869366, -0.21994948, 35.694515, -9.686936, -0.21994948, 43.694515)
-polygons = [PackedInt32Array(1, 0, 2), PackedInt32Array(2, 0, 3), PackedInt32Array(6, 5, 4), PackedInt32Array(4, 7, 6), PackedInt32Array(6, 7, 8), PackedInt32Array(3, 9, 2), PackedInt32Array(8, 7, 10), PackedInt32Array(10, 9, 8), PackedInt32Array(8, 9, 11), PackedInt32Array(11, 9, 3), PackedInt32Array(1, 12, 0), PackedInt32Array(0, 12, 13), PackedInt32Array(5, 6, 12), PackedInt32Array(12, 6, 13)]
+vertices = PackedVector3Array(-2.5869384, -0.27299994, -8.505486, -1.7869387, -0.27299994, -8.505486, -1.7869387, -0.27299994, -12.705485, -2.7869382, -0.27299994, -8.305485, -9.686938, -0.27299994, -4.2054853, -4.286938, -0.27299994, -4.2054853, -9.686938, -0.27299994, -12.705485, 1.9130621, -0.27299994, -8.505486, 1.9130621, -0.27299994, -12.705485, 1.1130619, -0.27299994, -2.8054857, -0.8869381, -0.27299994, -2.8054857, -1.2869387, -0.27299994, -2.2054853, 1.6130619, -0.27299994, -2.105485, -1.6869383, -0.27299994, -2.2054853, -3.5869384, -0.27299994, -3.7054853, -4.0869384, -0.27299994, -3.8054857, -6.1869383, -0.27299994, 34.994514, -5.9869385, -0.27299994, 34.794514, 1.9130621, -0.27299994, -2.105485, 0.113061905, -0.27299994, 34.994514, 0.113061905, -0.27299994, 35.494514, 161.71306, -0.27299994, -12.705485, 4.413062, -0.27299994, -4.2054853, -0.086937904, -0.27299994, 34.794514, 2.913062, -0.27299994, -8.305485, 3.0130615, -0.27299994, -7.7054853, 4.3130617, -0.27299994, -5.0054855, 2.7130613, -0.27299994, -8.505486, -0.086937904, -0.27299994, 35.694515, -9.686938, -0.27299994, 118.69451, 161.71306, -0.27299994, 118.69451, -6.1869383, -0.27299994, 35.494514, -5.9869385, -0.27299994, 35.694515, -3.1869383, 2.3270001, -8.205485, -3.1869383, 2.3270001, -2.7054853, 4.3130617, 2.3270001, -2.7054853, 4.3130617, 2.3270001, -8.205485, 1.4130621, -0.27299994, -3.3054857, -1.3869381, -0.27299994, -3.5054855, -1.8869381, -0.27299994, -7.4054856, -2.8869386, -0.27299994, -4.5054855, 3.113062, -0.27299994, -4.5054855, 2.0130615, -0.27299994, -7.4054856)
+polygons = [PackedInt32Array(2, 1, 0), PackedInt32Array(2, 0, 3), PackedInt32Array(3, 5, 2), PackedInt32Array(2, 5, 4), PackedInt32Array(2, 4, 6), PackedInt32Array(2, 8, 1), PackedInt32Array(1, 8, 7), PackedInt32Array(10, 9, 11), PackedInt32Array(11, 9, 12), PackedInt32Array(14, 13, 15), PackedInt32Array(15, 13, 4), PackedInt32Array(4, 13, 17), PackedInt32Array(4, 17, 16), PackedInt32Array(19, 18, 20), PackedInt32Array(20, 18, 22), PackedInt32Array(20, 22, 21), PackedInt32Array(11, 12, 13), PackedInt32Array(13, 12, 23), PackedInt32Array(13, 23, 17), PackedInt32Array(26, 25, 24), PackedInt32Array(27, 7, 8), PackedInt32Array(24, 27, 8), PackedInt32Array(4, 5, 15), PackedInt32Array(24, 8, 26), PackedInt32Array(26, 8, 21), PackedInt32Array(28, 20, 29), PackedInt32Array(29, 20, 30), PackedInt32Array(30, 20, 21), PackedInt32Array(22, 26, 21), PackedInt32Array(16, 31, 4), PackedInt32Array(4, 31, 29), PackedInt32Array(29, 32, 28), PackedInt32Array(12, 18, 23), PackedInt32Array(23, 18, 19), PackedInt32Array(29, 31, 32), PackedInt32Array(36, 35, 33), PackedInt32Array(33, 35, 34), PackedInt32Array(9, 10, 37), PackedInt32Array(37, 10, 38), PackedInt32Array(40, 39, 38), PackedInt32Array(38, 39, 37), PackedInt32Array(37, 39, 41), PackedInt32Array(41, 39, 42)]
 cell_size = 0.1
 cell_height = 0.1
 agent_radius = 0.3
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_noarx"]
 albedo_color = Color(0.83, 0.83, 0.83, 0.9882353)
-albedo_texture = ExtResource("3_xvgsr")
-uv1_scale = Vector3(10, 10, 10)
+albedo_texture = ExtResource("2_cptob")
+uv1_scale = Vector3(100, 100, 100)
 
 [sub_resource type="LabelSettings" id="LabelSettings_e0s0o"]
 
@@ -74,9 +76,9 @@ surface_material_override/0 = SubResource("StandardMaterial3D_a0tk4")
 material_override = SubResource("StandardMaterial3D_r3fl7")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=690731243]
-transform = Transform3D(0.76604444, 0.49240384, -0.4131759, 0, 0.64278764, 0.76604444, 0.6427876, -0.58682406, 0.4924039, -5.5986347, 18.369759, 0)
+transform = Transform3D(0.76604444, 0.49240384, -0.4131759, 0, 0.64278764, 0.76604444, 0.6427876, -0.58682406, 0.4924039, 50.9789, 22.226484, 41.474186)
 light_color = Color(0.9882353, 0.8980392, 0.4392157, 1)
-light_energy = 3.073
+light_energy = 0.482
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=1932397874]
 environment = SubResource("Environment_r3fl7")
@@ -96,9 +98,9 @@ use_collision = true
 size = Vector3(5.598358, 2, 0.2)
 
 [node name="CSGBox3D" type="CSGBox3D" parent="NavigationRegion3D" unique_id=1442355124]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13.001741, -0.66994953, 15.494515)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 112.01306, -0.66994953, 78.994514)
 use_collision = true
-size = Vector3(45.977356, 0.5, 57)
+size = Vector3(100, 0.5, 80)
 material = SubResource("StandardMaterial3D_noarx")
 
 [node name="cave2" type="CSGBox3D" parent="NavigationRegion3D" unique_id=1496887197]
@@ -120,6 +122,27 @@ size = Vector3(2.6, 3, 0.4)
 transform = Transform3D(0.7771459, 0, 0.6293204, 0, 1, 0, -0.6293204, 0, 0.7771459, 2.7715786, 0.32700002, -3.5880737)
 use_collision = true
 size = Vector3(3, 3, 0.4)
+
+[node name="cave6" type="CSGBox3D" parent="NavigationRegion3D" unique_id=1752951328]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 11.046, 3.0000005, 7.52)
+use_collision = true
+size = Vector3(41, 38, 0.4)
+
+[node name="CSGBox3D2" type="CSGBox3D" parent="NavigationRegion3D" unique_id=347829667]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 41.01306, -0.66994953, 27.994514)
+use_collision = true
+size = Vector3(100, 0.5, 80)
+material = SubResource("StandardMaterial3D_noarx")
+
+[node name="CSGBox3D15" type="CSGBox3D" parent="NavigationRegion3D" unique_id=3509764]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -9.1861515, 1.5584898, 6.954788)
+use_collision = true
+size = Vector3(39, 4, 0.2)
+
+[node name="CSGBox3D16" type="CSGBox3D" parent="NavigationRegion3D" unique_id=184162700]
+transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, 9.813849, 1.5584898, -12.04521)
+use_collision = true
+size = Vector3(39, 4, 0.2)
 
 [node name="SpawnPoints" type="Node3D" parent="." unique_id=83367137]
 
@@ -169,7 +192,32 @@ scale = Vector2(2.2592592, 2)
 text = "Health: 100"
 label_settings = SubResource("LabelSettings_e0s0o")
 
+[node name="WeaponLabel" type="Label" parent="HUD" unique_id=289296374 groups=["weapon_label"]]
+offset_left = 957.0
+offset_top = 556.0
+offset_right = 1011.0
+offset_bottom = 579.0
+scale = Vector2(2.602633, 2.373132)
+text = "Weapon: "
+
 [node name="barricade" parent="." unique_id=1214983301 instance=ExtResource("5_oqwcg")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0, -3)
+
+[node name="Shotgun" parent="." unique_id=2132139462 instance=ExtResource("7_10v3s")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9, 0, 0)
+cost = 50
+
+[node name="Rifle" parent="." unique_id=417086130 instance=ExtResource("7_10v3s")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9, 0, 3)
+weapon_name = "rifle"
+cost = 50
+
+[node name="Sniper" parent="." unique_id=259829984 instance=ExtResource("7_10v3s")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9, 0, 6)
+weapon_name = "sniper"
+cost = 50
+
+[node name="Door" parent="." unique_id=1669922765 instance=ExtResource("8_cptob")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.9187622, 1.101923, 11)
 
 [connection signal="timeout" from="WaveManager/Timer" to="WaveManager" method="_on_timer_timeout"]

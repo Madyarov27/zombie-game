@@ -1,0 +1,11 @@
+[gd_scene format=3 uid="uid://djsf53che5hrr"]
+
+[ext_resource type="Script" uid="uid://b64px3d5ulmwa" path="res://scripts/buyable_door.gd" id="1_hpvv5"]
+
+[node name="Door" type="Node3D" unique_id=1669922765]
+script = ExtResource("1_hpvv5")
+
+[node name="door" type="CSGBox3D" parent="." unique_id=749015471]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.5, 1, 0)
+use_collision = true
+size = Vector3(4, 3, 1)

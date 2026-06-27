@@ -18,13 +18,15 @@ func break_board():
 		update_boards()
 		print("Board broken!! Boards left:  ", boards_up)
 		
-func repair(delta):
+func repair(delta, player):
 	if boards_up < max_boards:
 		repair_timer += delta
 		if repair_timer >= repair_interval:
 			repair_timer = 0.0
 			boards_up += 1
 			update_boards()
+			player.gold += 50
+			player.update_gold_display()
 			print("Board repaired: boards left: ", boards_up)
 	
 	
