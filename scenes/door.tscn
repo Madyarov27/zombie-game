@@ -6,6 +6,6 @@
 script = ExtResource("1_hpvv5")
 
 [node name="door" type="CSGBox3D" parent="." unique_id=749015471]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.5, 1, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.5, 1.6589508, 0.39233252)
 use_collision = true
-size = Vector3(4, 3, 1)
+size = Vector3(4, 4.3179016, 0.21533495)

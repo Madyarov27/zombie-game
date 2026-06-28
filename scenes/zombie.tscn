@@ -1,26 +1,19 @@
 [gd_scene format=3 uid="uid://b7kbq5u3rgang"]
 
 [ext_resource type="Script" uid="uid://cjs7umeq5htql" path="res://scripts/zombie.gd" id="1_1vlb3"]
-
-[sub_resource type="BoxMesh" id="BoxMesh_e0s0o"]
-size = Vector3(0.40042114, 1.7591248, 0.42681885)
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_sier2"]
-albedo_color = Color(0.015999984, 0.48, 0, 0.99607843)
+[ext_resource type="PackedScene" uid="uid://wa7ita2412a3" path="res://scenes/Zombie Run (1).fbx" id="2_httt1"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_e0s0o"]
-size = Vector3(0.3894043, 1.7502441, 0.43151855)
+size = Vector3(0.6923218, 1.7502441, 0.43151855)
 
 [node name="Zombie" type="CharacterBody3D" unique_id=1092596387]
 script = ExtResource("1_1vlb3")
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=2109069193]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.012649536, 1.3795624, -0.023284912)
-mesh = SubResource("BoxMesh_e0s0o")
-surface_material_override/0 = SubResource("StandardMaterial3D_sier2")
-
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1524701630]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.01940918, 1.369237, -0.020568848)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.009613037, 1.369237, -0.020568848)
 shape = SubResource("BoxShape3D_e0s0o")
 
 [node name="NavigationAgent3D" type="NavigationAgent3D" parent="." unique_id=1178751166]
+
+[node name="Zombie Run (1)" parent="." unique_id=1519035558 instance=ExtResource("2_httt1")]
+transform = Transform3D(-1.2, 0, 1.04907336e-07, 0, 1.2, 0, -1.04907336e-07, 0, -1.2, -0.002041608, 0.3107438, -0.0004711151)

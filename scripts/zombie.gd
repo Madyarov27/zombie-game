@@ -1,12 +1,13 @@
 extends CharacterBody3D
 
 var health := 100
-var speed := 5
+var speed := 6
 var attack_range := 1.5
 var attack_damage := 10
 var attack_cooldown := 1.0
 var time_since_attack := 0.0
 
+@onready var anim_player = $"Zombie Run (1)/AnimationPlayer"
 
 func _physics_process(delta):
 	time_since_attack += delta
@@ -15,6 +16,7 @@ func _physics_process(delta):
 	if barricade != null:
 		velocity.x = 0
 		velocity.z = 0
+		#play_anim("attack")
 		if time_since_attack >= attack_cooldown:
 			time_since_attack = 0.0
 			barricade.break_board()
@@ -37,10 +39,16 @@ func _physics_process(delta):
 			direction = direction.normalized()
 			velocity.x = direction.x * speed
 			velocity.z = direction.z * speed
+			play_anim("mixamo_com")
+			
+			if direction.length() > 0.1:
+				var look_target = global_position + direction
+				look_at(look_target, Vector3.UP)
 		else:
 			# close enough: stop and attack
 			velocity.x = 0
 			velocity.z = 0
+			#play_anim("attack")
 			if time_since_attack >= attack_cooldown:
 				time_since_attack = 0.0
 				if player.has_method("take_damage"):
@@ -49,8 +57,10 @@ func _physics_process(delta):
 	velocity.y -= 9.8 * delta
 	move_and_slide()
 	
-
-	
+func play_anim(anim_name):
+	if anim_player.current_animation != anim_name:
+		anim_player.play(anim_name)
+		anim_player.speed_scale = 0.4
 
 		
 func take_damage(amount):
