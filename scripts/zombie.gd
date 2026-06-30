@@ -2,13 +2,30 @@ extends CharacterBody3D
 
 var health := 100
 var speed := 6
-var attack_range := 1.5
-var attack_damage := 10
+var attack_range := 1
+var attack_damage := 5
 var attack_cooldown := 1.0
 var time_since_attack := 0.0
 
-@onready var anim_player = $"Zombie Run (1)/AnimationPlayer"
+@onready var zombie_run = $"Zombie Run (1)/AnimationPlayer"
+@onready var zombie_attack = $"Zombie Run (1)/AnimationPlayer2"
+@onready var zombie_death = $"Zombie Run (1)/AnimationPlayer3"
 
+
+func _ready():
+	$GroanSound.stream = preload("res://sounds/zombie_groan.wav")
+	$GroanTimer.timeout.connect(_on_groan_timer)
+	start_groan_timer()
+	
+func start_groan_timer():
+	$GroanTimer.wait_time = randf_range(3.0, 7.0)
+	$GroanTimer.start()
+	
+func _on_groan_timer():
+	$GroanSound.pitch_scale = randf_range(0.8, 1.1)
+	$GroanSound.play()
+	start_groan_timer()	
+	
 func _physics_process(delta):
 	time_since_attack += delta
 	
@@ -16,17 +33,25 @@ func _physics_process(delta):
 	if barricade != null:
 		velocity.x = 0
 		velocity.z = 0
-		#play_anim("attack")
+		play_anim("attack")
 		if time_since_attack >= attack_cooldown:
 			time_since_attack = 0.0
 			barricade.break_board()
 		velocity.y = 9.8 * delta
 		move_and_slide()
 		return
-	
+	if is_dying:
+		velocity.x = 0
+		velocity.z = 0
+		velocity.y -= 9.8 * delta
+		move_and_slide()
+		return
+	time_since_attack += delta
 	var player = get_tree().get_first_node_in_group("player")
 	if player:
-		var distance = global_position.distance_to(player.global_position)
+		var to_player = player.global_position - global_position
+		to_player.y = 0
+		var distance = to_player.length()
 
 		if distance > attack_range:
 			# tell the navigation agent where we want to go
@@ -48,7 +73,7 @@ func _physics_process(delta):
 			# close enough: stop and attack
 			velocity.x = 0
 			velocity.z = 0
-			#play_anim("attack")
+			play_anim("attack")
 			if time_since_attack >= attack_cooldown:
 				time_since_attack = 0.0
 				if player.has_method("take_damage"):
@@ -56,11 +81,26 @@ func _physics_process(delta):
 
 	velocity.y -= 9.8 * delta
 	move_and_slide()
+	#$screams.play()
 	
 func play_anim(anim_name):
-	if anim_player.current_animation != anim_name:
-		anim_player.play(anim_name)
-		anim_player.speed_scale = 0.4
+	if anim_name == "death":
+		if zombie_death.current_animation != "death":
+			zombie_run.stop()
+			zombie_attack.stop()
+			zombie_death.play("death")
+	elif anim_name == "attack":
+		if zombie_attack.current_animation != "attack":
+			zombie_run.stop()
+			zombie_attack.play("attack")
+			zombie_attack.speed_scale=2
+	
+	else:
+		if zombie_run.current_animation != anim_name:
+				zombie_attack.stop()
+				zombie_run.play(anim_name)
+				zombie_run.speed_scale = 1.1
+	
 
 		
 func take_damage(amount):
@@ -69,14 +109,20 @@ func take_damage(amount):
 	if health <= 0:
 		die()
 	
-
+var is_dying := false
 func die():
+	if is_dying:
+		return
+	is_dying = true
 	print("Zombie died!")
 	var player = get_tree().get_first_node_in_group("player")
 	if player and player.has_method("add_gold"):
 		print("Calling add_gold")
-		player.add_gold(50)
+		player.add_gold(10000)
+	play_anim("death")	
+	await zombie_death.animation_finished
 	queue_free()
+	
 	
 
 func get_nearest_blocking_barricade():
@@ -94,7 +140,9 @@ func get_nearest_blocking_barricade():
 			continue
 			
 			
-		var to_player = (player.global_position - global_position).normalized()
+		var to_player = player.global_position - global_position
+		to_player.y = 0
+		var distance = to_player.length()
 		var to_barricade = (b.global_position - global_position).normalized()
 		
 		if to_player.dot(to_barricade) > 0.3:

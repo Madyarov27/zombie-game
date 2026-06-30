@@ -1,10 +1,10 @@
 [gd_scene format=3 uid="uid://di8kb3v6yh88l"]
 
 [ext_resource type="Script" uid="uid://b0nfj2hgc6b63" path="res://scripts/weapon_shop.gd" id="1_lx5au"]
+[ext_resource type="PackedScene" uid="uid://b8agl7k4dx8v6" path="res://scenes/sci-fi+vending+terminal+3d+model.glb" id="2_xfvoa"]
 
 [node name="Shop" type="Node3D" unique_id=2132139462]
 script = ExtResource("1_lx5au")
 
-[node name="CSGBox3D" type="CSGBox3D" parent="." unique_id=149697045]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
-size = Vector3(1, 2, 1)
+[node name="sci-fi+vending+terminal+3d+model" parent="." unique_id=981820388 instance=ExtResource("2_xfvoa")]
+transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 0, 0, 0)

@@ -1,19 +1,26 @@
 [gd_scene format=3 uid="uid://b7kbq5u3rgang"]
 
 [ext_resource type="Script" uid="uid://cjs7umeq5htql" path="res://scripts/zombie.gd" id="1_1vlb3"]
-[ext_resource type="PackedScene" uid="uid://wa7ita2412a3" path="res://scenes/Zombie Run (1).fbx" id="2_httt1"]
+[ext_resource type="AudioStream" uid="uid://c0m1lbkwb8jeg" path="res://sounds/zombie_groan.wav" id="3_xepks"]
+[ext_resource type="PackedScene" uid="uid://dg7stl6ggakuu" path="res://scenes/zombie_run_animation.tscn" id="4_4gx57"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_e0s0o"]
-size = Vector3(0.6923218, 1.7502441, 0.43151855)
+size = Vector3(0.5496063, 1.9683838, 0.29388428)
 
 [node name="Zombie" type="CharacterBody3D" unique_id=1092596387]
 script = ExtResource("1_1vlb3")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1524701630]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.009613037, 1.369237, -0.020568848)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.010856628, 1.2601671, 0.04824829)
 shape = SubResource("BoxShape3D_e0s0o")
 
 [node name="NavigationAgent3D" type="NavigationAgent3D" parent="." unique_id=1178751166]
 
-[node name="Zombie Run (1)" parent="." unique_id=1519035558 instance=ExtResource("2_httt1")]
-transform = Transform3D(-1.2, 0, 1.04907336e-07, 0, 1.2, 0, -1.04907336e-07, 0, -1.2, -0.002041608, 0.3107438, -0.0004711151)
+[node name="GroanSound" type="AudioStreamPlayer3D" parent="." unique_id=1590782162]
+stream = ExtResource("3_xepks")
+
+[node name="GroanTimer" type="Timer" parent="." unique_id=532296300]
+one_shot = true
+
+[node name="Zombie Run (1)" parent="." unique_id=267207476 instance=ExtResource("4_4gx57")]
+transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, 0, 0, 0)

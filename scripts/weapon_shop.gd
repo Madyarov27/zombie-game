@@ -19,6 +19,7 @@ func try_buy(player):
 		player.current_weapon = weapon_name
 		player.update_gold_display()
 		print("Bought ", weapon_name, "!")
+		player.update_gun_model()
 	else:
 		print("Not enough gold!")
 
