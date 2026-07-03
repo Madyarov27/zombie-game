@@ -15,7 +15,7 @@ func _process(delta: float) -> void:
 
 func vanish(player):
 	if !unlocked and has_node("door") and player.gold >= price:
-		$door.queue_free()
+		queue_free()
 		unlocked = true
 		player.gold -= price
 		player.update_gold_display()

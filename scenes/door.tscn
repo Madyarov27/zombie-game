@@ -1,11 +1,19 @@
 [gd_scene format=3 uid="uid://djsf53che5hrr"]
 
 [ext_resource type="Script" uid="uid://b64px3d5ulmwa" path="res://scripts/buyable_door.gd" id="1_hpvv5"]
+[ext_resource type="PackedScene" uid="uid://es6jucgaw6iu" path="res://scenes/damaged+bulkhead+door+3d+model (2).glb" id="2_uvdjg"]
 
-[node name="Door" type="Node3D" unique_id=1669922765]
+[sub_resource type="BoxShape3D" id="BoxShape3D_e0s0o"]
+size = Vector3(1, 1.7454224, 0.53448486)
+
+[node name="Door" type="Node3D" unique_id=1669922765 groups=["doors"]]
 script = ExtResource("1_hpvv5")
 
-[node name="door" type="CSGBox3D" parent="." unique_id=749015471]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.5, 1.6589508, 0.39233252)
-use_collision = true
-size = Vector3(4, 4.3179016, 0.21533495)
+[node name="door" parent="." unique_id=2060964995 instance=ExtResource("2_uvdjg")]
+transform = Transform3D(-9.616505e-08, 0, 2.2, 0, 2.2, 0, -2.2, 0, -9.616505e-08, 0, 0, 0)
+
+[node name="StaticBody3D" type="StaticBody3D" parent="." unique_id=2030198683]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D" unique_id=208292300]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.11264038, 0.009735107)
+shape = SubResource("BoxShape3D_e0s0o")

@@ -5,13 +5,13 @@
 [ext_resource type="PackedScene" uid="uid://dg7stl6ggakuu" path="res://scenes/zombie_run_animation.tscn" id="4_4gx57"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_e0s0o"]
-size = Vector3(0.5496063, 1.9683838, 0.29388428)
+size = Vector3(0.4971428, 1.6355591, 0.29388428)
 
 [node name="Zombie" type="CharacterBody3D" unique_id=1092596387]
 script = ExtResource("1_1vlb3")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1524701630]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.010856628, 1.2601671, 0.04824829)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.012773514, 1.1001068, 0.04824829)
 shape = SubResource("BoxShape3D_e0s0o")
 
 [node name="NavigationAgent3D" type="NavigationAgent3D" parent="." unique_id=1178751166]
@@ -23,4 +23,4 @@ stream = ExtResource("3_xepks")
 one_shot = true
 
 [node name="Zombie Run (1)" parent="." unique_id=267207476 instance=ExtResource("4_4gx57")]
-transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, 0, 0, 0)
+transform = Transform3D(-0.9868557, 0, -0.1616039, 0, 1, 0, 0.1616039, 0, -0.9868557, 0, 0, 0)

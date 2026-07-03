@@ -1,9 +1,9 @@
 extends CharacterBody3D
 
 var health := 100
-var speed := 6
+var speed := 4
 var attack_range := 1
-var attack_damage := 5
+var attack_damage := 10
 var attack_cooldown := 1.0
 var time_since_attack := 0.0
 
@@ -118,8 +118,13 @@ func die():
 	var player = get_tree().get_first_node_in_group("player")
 	if player and player.has_method("add_gold"):
 		print("Calling add_gold")
-		player.add_gold(10000)
+		player.add_gold(50)
+
+	$CollisionShape3D.disabled = true
+	
+	set_physics_process(false)
 	play_anim("death")	
+
 	await zombie_death.animation_finished
 	queue_free()
 	

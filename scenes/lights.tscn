@@ -1,0 +1,22 @@
+[gd_scene format=3 uid="uid://cptsb64mgcv71"]
+
+[ext_resource type="PackedScene" uid="uid://dnp5072vpo6ti" path="res://scenes/industrial+light+bar+3d+model (1).glb" id="1_yky8o"]
+
+[node name="lights" type="Node3D" unique_id=2123651153]
+
+[node name="industrial+light+bar+3d+model (1)5" parent="." unique_id=817622836 instance=ExtResource("1_yky8o")]
+transform = Transform3D(1.9106855e-15, 4.371139e-08, 1, 1, -4.371139e-08, 0, 4.371139e-08, 1, -4.371139e-08, 0, 0, 0.4)
+
+[node name="OmniLight3D" type="OmniLight3D" parent="industrial+light+bar+3d+model (1)5" unique_id=1844115137]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.25697243, 0, 0)
+light_energy = 3.31
+
+[node name="industrial+light+bar+3d+model (1)6" parent="." unique_id=1244752934 instance=ExtResource("1_yky8o")]
+transform = Transform3D(1.9106855e-15, 4.371139e-08, 1, 1, -4.371139e-08, 0, 4.371139e-08, 1, -4.371139e-08, 0, 0, -0.4)
+
+[node name="OmniLight3D" type="OmniLight3D" parent="industrial+light+bar+3d+model (1)6" unique_id=2056827724]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.25697243, -2.9802322e-08, -0.15124461)
+light_energy = 3.31
+
+[editable path="industrial+light+bar+3d+model (1)5"]
+[editable path="industrial+light+bar+3d+model (1)6"]
